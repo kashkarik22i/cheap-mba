@@ -4,8 +4,8 @@ import classNames from "classnames";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 // @material-ui/icons
-import Camera from "@material-ui/icons/Camera";
-import Palette from "@material-ui/icons/Palette";
+import DoneAllIcon from '@material-ui/icons/DoneAll';
+import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 // core components
 import Header from "components/Header/Header.js";
 import Footer from "components/Footer/Footer.js";
@@ -94,7 +94,7 @@ export default function ProfilePage(props) {
                   tabs={[
                     {
                       tabButton: "In Progress",
-                      tabIcon: Camera,
+                      tabIcon: ArrowForwardIcon,
                       tabContent: (
                         <GridContainer justify="center">
                           <GridItem xs={12} sm={12} md={4}>
@@ -109,7 +109,7 @@ export default function ProfilePage(props) {
                     },
                     {
                       tabButton: "Complete",
-                      tabIcon: Palette,
+                      tabIcon: DoneAllIcon,
                       tabContent: (
                         <GridContainer justify="center">
                           <GridItem xs={12} sm={12} md={4}>
