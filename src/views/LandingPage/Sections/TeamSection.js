@@ -53,13 +53,15 @@ export default function TeamSection() {
                   justIcon
                   color="transparent"
                   className={classes.margin5}
+                  href="https://www.facebook.com/ilya.kashkarev"
                 >
-                  <i className={classes.socials + " fab fa-twitter"} />
+                  <i className={classes.socials + " fab fa-facebook"} />
                 </Button>
                 <Button
                   justIcon
                   color="transparent"
                   className={classes.margin5}
+                  href="https://www.linkedin.com/in/ilya-kashkarev-54b8a13b/"
                 >
                   <i className={classes.socials + " fab fa-linkedin"} />
                 </Button>

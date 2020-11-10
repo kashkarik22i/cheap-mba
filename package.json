@@ -1,7 +1,7 @@
 {
-  "name": "material-kit-react",
-  "version": "1.9.0",
-  "description": "Material Kit React. Coded by Creative Tim",
+  "name": "cheap-mba",
+  "version": "0.0.1",
+  "description": "Cheap MBA - for the Smart",
   "private": true,
   "main": "src/index.js",
   "dependencies": {

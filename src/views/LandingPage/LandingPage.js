@@ -31,9 +31,9 @@ export default function LandingPage(props) {
   return (
     <div>
       <Header
+        brand="Cheap MBA"
         color="transparent"
         routes={dashboardRoutes}
-        brand="Cheap MBA"
         rightLinks={<HeaderLinks />}
         fixed
         changeColorOnScroll={{
@@ -42,7 +42,7 @@ export default function LandingPage(props) {
         }}
         {...rest}
       />
-      <Parallax filter image={require("assets/img/landing-bg.jpg")}>
+      <Parallax filter image={require("assets/img/bg-main.jpg")}>
         <div className={classes.container}>
           <GridContainer>
             <GridItem xs={12} sm={12} md={6}>
