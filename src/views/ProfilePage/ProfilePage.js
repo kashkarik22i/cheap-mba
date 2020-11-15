@@ -16,10 +16,10 @@ import HeaderLinks from "components/Header/HeaderLinks.js";
 import NavPills from "components/NavPills/NavPills.js";
 import Parallax from "components/Parallax/Parallax.js";
 
-import profile from "assets/img/faces/ilya.jpg";
+import profile from "assets/img/ilya.jpg";
 
-import course1 from "assets/img/examples/course1.png";
-import course2 from "assets/img/examples/course2.png";
+import course1 from "assets/img/course1.png";
+import course2 from "assets/img/course2.png";
 
 import styles from "assets/jss/material-kit-react/views/profilePage.js";
 
