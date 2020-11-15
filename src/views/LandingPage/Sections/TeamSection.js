@@ -16,7 +16,7 @@ import CardFooter from "components/Card/CardFooter.js";
 
 import styles from "assets/jss/material-kit-react/views/landingPageSections/teamStyle.js";
 
-import team_ilya from "assets/img/faces/ilya.jpg";
+import team_ilya from "assets/img/ilya.jpg";
 
 const useStyles = makeStyles(styles);
 
