@@ -12,7 +12,7 @@ import CardBody from "components/Card/CardBody.js";
 import CardHeader from "components/Card/CardHeader.js";
 
 import GoogleLogin from 'react-google-login';
-import { withRouter } from "react-router-dom";
+import { withRouter, useLocation } from "react-router-dom";
 
 import styles from "assets/jss/material-kit-react/views/loginPage.js";
 
@@ -27,6 +27,19 @@ export default function LoginPageInner(props) {
   }, 700);
   const classes = useStyles();
   const { ...rest } = props;
+
+  let location = useLocation();
+
+  const responseGoogle = (googleUser) => {
+    console.log(JSON.stringify(googleUser));
+    const idToken = googleUser.getAuthResponse().id_token;
+    const googleEmail = googleUser.profileObj.email;
+    localStorage.setItem('idToken', idToken);
+    localStorage.setItem('googleEmail', googleEmail);
+    let { from } = location.state || { from: { pathname: "/" } };
+    props.history.replace(from)
+  };
+
   return (
     <div>
       <Header
@@ -54,7 +67,8 @@ export default function LoginPageInner(props) {
                 <CardBody>
                   <GoogleLogin
                     clientId="771945361737-053silnpvd0gd6d756n2b3dvnr1su4jf.apps.googleusercontent.com"
-                    loginHint="Cheap MBA"
+                    onSuccess={responseGoogle}
+                    onFailure={responseGoogle}
                   />
                 </CardBody>
               </Card>
