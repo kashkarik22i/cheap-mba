@@ -1,6 +1,8 @@
 import React from "react";
+import PropTypes from 'prop-types'
+
 // @material-ui/core components
-import { makeStyles } from "@material-ui/core/styles";
+import { withStyles } from "@material-ui/core/styles";
 
 // @material-ui/icons
 
@@ -12,11 +14,24 @@ import Button from "components/CustomButtons/Button.js";
 
 import styles from "assets/jss/material-kit-react/views/landingPageSections/workStyle.js";
 
-const useStyles = makeStyles(styles);
+const axios = require('axios')
 
-export default function WorkSection() {
-  const classes = useStyles();
-  return (
+class WorkSection extends React.Component {
+  callApi = async () => {
+    try {
+      const response = await axios.post('/api/messages', {
+        "email": "bla",
+        "name": "foo",
+        "message": "bar"
+      });
+      console.log(response);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  render() {
+    const { classes } = this.props;
+    return (
     <div className={classes.section}>
       <GridContainer justify="center">
         <GridItem cs={12} sm={12} md={8}>
@@ -58,12 +73,23 @@ export default function WorkSection() {
                 }}
               />
               <GridItem xs={12} sm={12} md={4}>
-                <Button color="primary">Send Message</Button>
+                <Button
+                  color="primary"
+                  onClick={() => { this.callApi() }}>
+                  Send Message
+                </Button>
               </GridItem>
             </GridContainer>
           </form>
         </GridItem>
       </GridContainer>
     </div>
-  );
+  );}
 }
+
+WorkSection.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
+
+export default withStyles(styles)(WorkSection);
