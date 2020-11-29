@@ -17,12 +17,20 @@ import styles from "assets/jss/material-kit-react/views/landingPageSections/work
 const axios = require('axios')
 
 class WorkSection extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      email: '',
+      name: '',
+      message: ''
+    };
+  }
   callApi = async () => {
     try {
       const response = await axios.post('/api/messages', {
-        "email": "bla",
-        "name": "foo",
-        "message": "bar"
+        "email": this.state.email,
+        "name": this.state.name,
+        "message": this.state.message
       });
       console.log(response);
     } catch (error) {
@@ -49,6 +57,10 @@ class WorkSection extends React.Component {
                   formControlProps={{
                     fullWidth: true
                   }}
+                  inputProps={{
+                    onChange: (event) => { this.setState({name: event.target.value}) },
+                    value: this.state.name
+                  }}
                 />
               </GridItem>
               <GridItem xs={12} sm={12} md={6}>
@@ -57,6 +69,10 @@ class WorkSection extends React.Component {
                   id="email"
                   formControlProps={{
                     fullWidth: true
+                  }}
+                  inputProps={{
+                    onChange: (event) => { this.setState({email: event.target.value}) },
+                    value: this.state.email
                   }}
                 />
               </GridItem>
@@ -69,13 +85,15 @@ class WorkSection extends React.Component {
                 }}
                 inputProps={{
                   multiline: true,
-                  rows: 5
+                  rows: 3,
+                  onChange: (event) => { this.setState({message: event.target.value}) },
+                  value: this.state.message
                 }}
               />
               <GridItem xs={12} sm={12} md={4}>
                 <Button
                   color="primary"
-                  onClick={() => { this.callApi() }}>
+                  onClick={() => { this.callApi(); this.setState({message: '', email: '', name: ''}) }}>
                   Send Message
                 </Button>
               </GridItem>

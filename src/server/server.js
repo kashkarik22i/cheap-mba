@@ -15,19 +15,23 @@ admin.initializeApp({
 const db = admin.firestore();
 
 app.get('/api/messages', (req, res) => {
+  results = []
   try {
-    console.log('Hello From Express');
-    res.send({ express: 'Hello From Express' });
+    db.collection('messages').orderBy('date', 'desc').limit(10).get().then((snapshot) => {
+      snapshot.forEach((doc) => {
+        results.push({id: doc.id, ...doc.data()})
+      });
+      res.send({ results });
+    });
   } catch (error) {
     console.log(error);
+    res.send({ results });
   }
 });
 
 app.post('/api/messages', (req, res) => {
   try {
-    console.log('Hello From Express');
-    console.log(req.body);
-    db.collection('messages').add({...req.body, ...{'date': new Date().toUTCString()}});
+    db.collection('messages').add({ ...req.body, ...{ 'date': new Date().toUTCString() } });
     res.send('OK');
   } catch (error) {
     console.log(error);
