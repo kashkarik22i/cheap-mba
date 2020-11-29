@@ -4,11 +4,16 @@
   "description": "Cheap MBA - for the Smart",
   "private": true,
   "main": "src/index.js",
-  "proxy": "http://localhost:6000",
+  "proxy": "http://localhost:8080",
   "dependencies": {
     "@material-ui/core": "4.10.0",
     "@material-ui/icons": "4.9.1",
+    "axios": "0.21.0",
+    "body-parser": "1.18.3",
     "classnames": "2.2.6",
+    "express": "4.16.4",
+    "express-rate-limit": "5.2.3",
+    "firebase-admin": "9.4.1",
     "history": "4.10.1",
     "moment": "2.26.0",
     "node-sass": "4.14.1",
@@ -17,15 +22,11 @@
     "react": "16.13.1",
     "react-datetime": "2.16.3",
     "react-dom": "16.13.1",
+    "react-google-login": "5.1.22",
     "react-router-dom": "5.2.0",
     "react-scripts": "3.4.1",
     "react-slick": "0.26.1",
-    "react-swipeable-views": "0.13.9",
-    "react-google-login": "5.1.22",
-    "body-parser": "1.18.3",
-    "express": "4.16.4",
-    "axios": "0.21.0",
-    "firebase-admin": "9.4.1"
+    "react-swipeable-views": "0.13.9"
   },
   "devDependencies": {
     "@babel/cli": "7.10.1",
@@ -42,7 +43,8 @@
     "typescript": "3.9.3"
   },
   "scripts": {
-    "start": "concurrently --kill-others-on-fail \"node src/server/server.js\" \"react-scripts start\"",
+    "start": "react-scripts start",
+    "server": "node src/server/server.js",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",

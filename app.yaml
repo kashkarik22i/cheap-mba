@@ -1,18 +1,24 @@
 runtime: nodejs12
 
-entrypoint: serve -s build -l 8080
+entrypoint: npm run server
 
 handlers:
 # Serve all static files with url ending with a file extension
-- url: /(.*\..+)$
-  secure: always
-  static_files: build/\1
-  upload: build/(.*\..+)$
+#- url: /(.*\..+)$
+#  secure: always
+#  static_files: build/\1
+#  upload: build/(.*\..+)$
 # Catch all handler to index.html
+#- url: /
+#  secure: always
+#  static_files: build/index.html
+#  upload: build/index.html
+#- url: /
+#  static_dir: build
 - url: /.*
   secure: always
-  static_files: build/index.html
-  upload: build/index.html
+  #redirect_http_response_code: 301
+  script: auto
 
 env_variables:
   PORT: 8080
